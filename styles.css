@@ -1,0 +1,894 @@
+/* Reset & 全域設定 */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+
+
+/*全版面框架*/
+body { 
+    font-family: "Noto Sans", sans-serif;
+    line-height:1.6;
+    margin: 0;
+    padding-top: 60px; /* 根據 navbar 高度調整，避免內容被蓋住 */
+  }
+/*各區塊*/
+section {
+  padding:3em 2em;
+}
+/*標題*/
+h2 {
+  margin-bottom: 3em; text-align:center;
+}
+
+/*************************************至頂列**************************************/
+/* 標題跟選單 */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar 固定上方 */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(250, 252, 204);
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2em 1em;
+}
+
+/* Logo */
+.logo {
+  color: rgba(107, 149, 96);
+  font-size: 2.3em;
+  font-weight: bold;
+  font-family: "LXGW WenKai TC" , sans-serif;
+  flex-shrink: 0;
+  white-space: nowrap;
+  margin-left: 3em;
+}
+
+/* 漢堡樣式（改用3條線） */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  background-color: rgba(107, 149, 96);
+  border-radius: 2px;
+  transition: 0.4s ease;
+  transform-origin: center;
+}
+
+/* 漢堡變 X 的動畫效果 */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(13px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-13px);
+}
+
+/* 導覽選單 (預設電腦版) */
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 7em;
+  font-size: large;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* 設定導覽列列表項目的左邊距離，讓選單項目彼此有間隔 */
+.nav-links li {
+  margin-left: 1em;
+}
+
+/* 設定導覽列中的超連結樣式，包含文字顏色、取消底線、內距與區塊顯示 */
+.nav-links a {
+  color: rgba(107, 149, 96);
+  text-decoration: none;
+  padding: 1em;
+  display: block;
+}
+
+.nav-links a:hover {
+  background: rgb(250, 253, 155);
+  filter: brightness(1.1);
+  border-radius: 50px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 手機版處理 */
+@media (max-width: 768px) {
+.hamburger {
+  display: flex;
+}
+
+  /* 隱藏選單（手機版用）*/
+.nav-links {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgb(250, 252, 204);
+}
+
+/* 展開選單時，加上 show 類別 */
+.nav-links.show {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.nav-links li{
+  margin: 0;
+  text-align: left;
+}
+}
+/************************************* 至頂列結束 **************************************/
+
+/*************************************投影片slide轉換區*******************************/
+
+/* #hero 是輪播區塊的容器，控制整體大小與顯示方式 */
+#hero {
+  width: 100%;
+  aspect-ratio: 3.3425/1;     /* 設定寬高比，維持畫面比例 */
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+
+/* .carousel 是包住所有 slide 的區塊，用來做橫向移動切換效果 */
+.carousel {
+  display:flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* 每個 .slide 代表一張圖片的容器 */
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* 圖片本身的樣式設定 */
+.slide img {
+  width: 95%;
+  height: auto;
+  display: block;
+}
+
+/* 設定霧化背景 */
+.slide::before,
+.slide::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 2.5%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  transform: scale(1.2);
+  z-index: 0;
+}
+
+/* 分別控制 before 在左邊，after 在右邊 */
+.slide::before {
+  left: 0;
+}
+
+.slide::after {
+  right: 0;
+}
+
+
+/* 每張 slide 設定左右背景圖（你可依需求改圖） */
+.slide:nth-child(1)::before,
+.slide:nth-child(1)::after {
+  background-image: url('hero/hero1.png');
+}
+
+.slide:nth-child(2)::before,
+.slide:nth-child(2)::after {
+  background-image: url('hero/hero2.png');
+}
+
+.slide:nth-child(3)::before,
+.slide:nth-child(3)::after {
+  background-image: url('hero/hero3.png');
+}
+
+.slide:nth-child(4)::before,
+.slide:nth-child(4)::after {
+  background-image: url('hero/hero4.png');
+}
+
+/* 圖片樣式設定，確保在背景上層 */
+.slide img {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* 箭頭設定 */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: calc(1.5vw + 1rem);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.prev {
+  left: 2%;
+}
+
+.next {
+  right: 2%;
+}
+
+/*************************************投影片slide轉換區*******************************/
+
+/*************************************關於我們字區************************************/
+
+/* 區塊：整個 #about 區域的外距設定 */
+#about {
+  padding: 0;
+  padding-bottom: 3em;
+}
+
+/* 區塊標題的背景與排版設定 */
+.about-h2 {
+  background: linear-gradient(to bottom, rgba(107, 149, 96, 0.678), transparent);
+  padding: 2em 1em;
+  text-align: center;
+}
+
+/* h2 元素本身的 margin 設定，控制上下距離 */
+.about-h2 h2{
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+
+/* 中文標題設定 */
+h2 .h2-chinese {
+  font-size: 1.5em;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0;
+  font-family: "LXGW WenKai TC" , sans-serif;
+}
+
+/* 英文副標題設定 */
+h2 .h2-english {
+  font-size: 1em;
+  font-weight: 400;
+  display: block;
+  margin-top:0.2em;
+  font-family: "LXGW WenKai TC" , sans-serif;
+}
+
+/* 關於我們主要內容區塊的排版設定 */
+.about-content {
+  display: flex;
+  gap: 5em;
+  align-items: center;
+  max-width: 1500px;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+
+/* 圖片容器的設定 */
+.about-image {
+  flex: 2.5;
+  min-width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 圖片本身的樣式 */
+.about-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* 滑鼠 hover 在圖片容器時，圖片放大一點 */
+.about-image:hover img {
+  transform: scale(1.08);
+}
+
+/* 文字內容區塊設定 */
+.about-text {
+  position: relative;
+  flex: 2;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* 額外內容區塊（可用於附加裝飾或補充說明區塊） */
+.extra-box {
+  margin-top: 5em;
+  padding: 1em;
+}
+
+/* 裝飾圖層的基本樣式 */
+.about-deco {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* 裝飾圖的「常態」樣式（預設顯示） */
+.about-deco.normal {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* 裝飾圖的「hover」樣式（預設隱藏） */
+.about-deco.hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* 滑鼠移入整個 extra-box 時，隱藏 normal 圖層 */
+.extra-box:hover .normal {
+  opacity: 0;
+}
+
+/* 滑鼠移入時，顯示 hover 圖層 */
+.extra-box:hover .hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  /* 將原本橫向排列的 about 區塊改為直向堆疊（手機排版） */
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  /* 圖片容器：限制寬度，置中顯示 */
+  .about-image {
+    width: 80vw;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto 0em;
+  }
+  /* 圖片本體：填滿容器 */
+  .about-image img {
+    width: 100%;
+    height: auto;
+  }
+  /* 文字區塊：縮小文字以適應小螢幕 */
+  .about-text {
+    font-size: 1em;
+  }
+}
+/*************************************關於我們字區end*********************************/
+/*************************************服務項目 start*********************************/
+
+/* === 服務區塊的整體設定 === */
+#services {
+  padding: 0;
+  padding-bottom: 3em;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* === 服務區塊背景遮罩設定，利用偽元素放置背景圖 === */
+#services::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('services/backpic.jpg'); 
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35; 
+  z-index: -1; 
+}
+
+/* === 服務區塊標題區塊，置中並有內距 === */
+.services-h2 {
+  padding: 2em 1em;
+  text-align: center;
+}
+
+/* === 服務區塊標題文字樣式調整 === */
+.services-h2 h2{
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+
+/* === 服務項目網格佈局設定 === */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+  padding: 2em;
+  justify-content: center;
+}
+
+/* === 單一服務項目卡片樣式 === */
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  width: 500px;
+  height: 500px;
+  justify-self: end;
+}
+
+/* 服務項目中偶數（第2、4、6...個）項目，在網格中靠左對齊 */
+.service:nth-child(2n) {
+  justify-self: start;
+}
+
+/* 服務項目中圖片容器，寬度撐滿父元素，高度自動，隱藏溢出 */
+.service-img {
+  width: 100%;
+  height: auto;             
+  overflow: hidden;
+}
+
+/* 圖片寬度與高度都撐滿容器，使用 cover 保持比例並裁切 */
+.service-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 服務項目文字區塊，寬度撐滿，內距 1em，固定高度 232px，盒模型計算padding */
+.service-text {
+  width: 100%;
+  padding: 1em;
+  height: 232px;             
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+/* 服務項目標題 h3，底部留 0.5em 空隙，字體大小和顏色 */
+.service-text h3 {
+  margin: 0 0 0.5em;
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* 服務項目文字描述，無外距，字體大小、行距設定，字色，超出隱藏並顯示省略號 */
+.service-text p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1000px) and (min-width: 769px) {
+  /* 服務項目網格的間距縮小，左右內距調整 */
+  .services-grid {
+    gap: 1.5em;
+    padding: 2em 1em;
+  }
+  /* 服務項目寬度設為容器的 90%，最大寬度限制為 450px */
+  .service {
+    width: 90%;            
+    max-width: 450px;      
+    height: auto;          
+    justify-self: center;  
+  }
+  /* 服務項目文字區塊高度設為自動，隨內容調整 */
+  .service-text {
+    height: auto;          
+  }
+}
+
+@media (max-width: 768px) {
+  /* 服務項目網格改為單欄排列，並調整內距 */
+  .services-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5em 1em;
+  }
+  /* 服務項目寬度設為視窗寬度的 90%，最大寬度限制為 500px */
+  .service {
+    width: 90vw;           
+    max-width: 500px;      
+    margin: 0 auto;        
+    height: auto;         
+  }
+  /* 服務項目中的圖片寬度填滿父元素，保持高寬比 */
+  .service img {
+    width: 100%;          
+    height: auto;
+    object-fit: cover;
+  }
+  /* 服務項目文字區塊高度自動調整 */
+  .service-text {
+    height: auto;  
+  }
+}
+/*************************************服務項目 end*********************************/
+/************************************ 業務範圍 start *************************************/
+
+/* #scope：範圍區塊背景使用上下濃淡、中間透明的線性漸層效果 */
+#scope {
+  background: linear-gradient(to bottom, 
+    rgba(107, 149, 96, 0.9) 0%, 
+    rgba(107, 149, 96, 0.3) 45%, 
+    rgba(107, 149, 96, 0.3) 55%, 
+    rgba(107, 149, 96, 0.9) 100%
+  );
+}
+
+/* .office-map：辦公地圖區塊，置中排列，限制最大寬度，圓角和白底 */
+.office-map {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+  border-radius: 20px;
+  background-color: white;
+  padding: 2em;
+}
+
+/* .head-office：總部區塊，文字置中 */
+.head-office {
+  text-align: center;
+}
+
+/* .head-office img：總部圖片設定 */
+.head-office img {
+  width: 100%;
+  max-width: 600px;  
+  height: auto;      
+  border-radius: 12px;
+  z-index: 2;
+  position: relative;
+  margin: 1.5em 0;    
+}
+
+/* .element_title：標題文字，行內區塊顯示 */
+.element_title {
+  display: inline-block;
+  font-size: 1.5em;
+  font-weight: 600;
+  position: relative;
+  color: rgba(29, 61, 21, 0.85); 
+  margin-bottom: 1em; 
+}
+
+/* .element_title::after：標題底下細長方形底線 */
+.element_title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px; 
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px; 
+  background-color: #FFB366;
+  border-radius: 2px;
+}
+
+/* .headquarters_position：描述文字 */
+.headquarters_position {
+  font-size: 1.2em;
+  color: rgba(29, 61, 21, 0.678);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 700;
+  position: relative;
+}
+
+/* .branches：分公司容器區塊 */
+.branches {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+  position: relative;
+}
+
+/* .branch：單一分公司卡片 */
+.branch {
+  width: 30%;
+  text-align: center;
+}
+
+/* .image-wrapper：圖片容器 */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+/* .image-wrapper img：分公司圖片 */
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* .image-wrapper:hover img：滑鼠懸停圖片時的放大效果 */
+.image-wrapper:hover img {
+  transform: scale(1.3);
+}
+
+/* .img-overlay_1：第一張圖片的覆蓋層 */
+.img-overlay_1 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(107, 149, 96, 0.7);
+  padding: 0.2em 0;
+  text-align: center;
+}
+
+/* .img-overlay_2：第二張圖片的覆蓋層 */
+.img-overlay_2 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(68, 125, 179, 0.5);
+  padding: 0.2em 0;
+  text-align: center;
+}
+
+/* .img-overlay_3：第三張圖片的覆蓋層 */
+.img-overlay_3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(111, 112, 22, 0.7);
+  padding: 0.2em 0;
+  text-align: center;
+}
+
+/* .Business_scope：公司業務範圍段落的樣式 */
+.Business_scope {
+  color: white;
+  font-size: 1.1em;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* .bottom-pic：底部圖片容器 */
+.bottom-pic {
+  padding: 0 10%;
+  text-align: center;
+}
+
+/* .bottom-pic img：底部圖片本身 */
+.bottom-pic img {
+  width: 80%;
+  height: auto;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  /* .branches：分公司容器在 RWD 手機版時的樣式 */
+  .branches {
+    flex-direction: column;
+    align-items: center;
+  }
+  /* .branch：每個分公司區塊的樣式 */
+  .branch {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+  }
+  /* .image-wrapper：圖片包裹容器 */
+  .image-wrapper {
+    max-width: 250px;
+  }
+}
+/************************************ 業務範圍 end*************************************/
+/************************************* 聯絡表單 **************************************/
+#contact {
+  position: relative;
+  color: black;
+  font-family: 'Noto Sans TC', sans-serif;
+  padding: 3em 10%;
+  z-index: 0;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('contact/background.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8; /* 調整透明度，0.0 ~ 1.0 */
+  z-index: -1;
+}
+
+
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2em;
+  background-color: rgba(255,255,255,0.8);
+  padding: 2em;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  min-height: 400px;
+}
+
+.contact-info {
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin-top: 4.5em;
+}
+
+.contact-title {
+  font-size: 2.2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.contact-text {
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+}
+
+.contact-info .icon {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
+.contact-info,
+.map-wrapper,
+.qr-codes {
+  flex: 1 1 30%;
+}
+
+.map-wrapper {
+  flex: 1 1 300px;
+  aspect-ratio: 1 / 1;
+  max-width: 400px;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.qr-codes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.qr-codes img {
+  max-width: 175px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+/* 手機模式改為上下排列 */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .qr-codes {
+    flex-direction: row;
+  }
+
+  .qr-codes img {
+    margin: 0.5em;
+  }
+
+  .map-wrapper iframe {
+    height: 250px;
+  }
+}
+
+/* Footer */
+footer {
+  background:#222; color:#ccc; text-align:center;
+  padding:1em;
+}
+
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: rgb(250, 252, 204);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.7;
+  transition: all 0.3s;
+  display: none; /* 一開始隱藏 */
+}
+
+.back-to-top:hover {
+  background-color: rgb(157, 185, 149);
+  opacity: 1;
+}
+
+.back-to-top img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}

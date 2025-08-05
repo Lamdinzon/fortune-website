@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林老師卡好</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!------------------------- Header + Navbar --------------------------------->
+    <header id="top">
+        <nav class="navbar">
+
+            <!-- Logo -->
+            <div class="logo">林老師卡好</div>
+
+            <!-- 三條線組成的漢堡 -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- 導覽選單 -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#services">服務項目</a></li>
+                <li><a href="#scope">業務範圍</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!---------------------- Header + Navbar end ------------------------------->
+    <!------------------------- Hero / Carousel -------------------------------->
+    <section id="hero">
+      <div class="carousel" id="carousel">
+          <div class="slide"><img src="hero/hero1.png" alt="Hero 1"></div>
+          <div class="slide"><img src="hero/hero2.png" alt="Hero 2"></div>
+          <div class="slide"><img src="hero/hero3.png" alt="Hero 3"></div>
+          <div class="slide"><img src="hero/hero4.png" alt="Hero 4"></div>
+      </div>
+      <button class="nav-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="nav-arrow next" onclick="moveSlide(1)">&#10095;</button>
+    </section>
+    <!---------------------- Hero / Carousel end------------------------------->
+  <!------------------------------ About ------------------------------------>
+  <section id="about">
+    <!-- about head -->
+     <div class="about-h2">
+      <h2>
+        <span class = "h2-chinese">關於我們</span>
+        <span class = "h2-english">About us</span>
+      </h2>
+     </div>
+
+    <!-- about content -->
+    <div class="about-content">
+      <div class="about-image">
+        <div class="about-image"><img src="about/transition.png" alt="transition"></div>
+      </div>
+      <div class="about-text">
+        <p>林家命理研究傳承四十年，融合大數據與AI科技，提升命理預測的準確性。<br><br>
+          服務超過三萬名客戶，涵蓋美業、金融、土地、電子廠等各行各業，深獲信賴。<br><br>
+          業務遍及全台、中港，以及東南亞主要城市，熟稔各地風土民情。<br><br>
+          提供多元命理服務，陪伴您洞察未來、趨吉避凶。<br>
+        </p>
+        <div class="extra-box">
+          <img class="about-deco normal" src="about/cat1.png" alt="乖乖貓">
+          <img class="about-deco hover" src="about/cat2.png" alt="乖乖貓eating">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!------------------------------ About end--------------------------------->
+
+
+  <!------------------------------- 服務項目 --------------------------------->
+  <section id="services">
+    <!-- services head -->
+    <div class="services-h2">
+      <h2>
+        <span class = "h2-chinese">服務項目</span>
+        <span class = "h2-english">Service</span>
+      </h2>
+    </div>
+
+    <!-- services grid -->
+    <div class="services-grid">
+
+      <div class="service">
+        <div class="service-img">
+          <img src="services/bazhi.jpeg" alt="八字命理">
+        </div>
+        <div class="service-text">
+          <h3>八字論命</h3>
+          <p>融合傳統八字與AI大數據分析，結合四十年來深耕在地的經驗，
+            為您在健康、事業、感情等人生關鍵時刻提供最貼近實際的決策建議。<br>
+            我們採一對一個別諮詢，獨立辦公空間確保隱私，讓您安心無憂。<br>
+            不方便親訪？也提供線上視訊解盤服務，隨時隨地為您解析命理，掌握先機。
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-img">
+          <img src="services/funshui.jpeg" alt="風水堪輿">
+        </div>
+        <div class="service-text">
+          <h3>陽宅堪輿</h3>
+          <p>透過專業的陽宅堪輿服務，為您的空間提供最佳的風水佈局和調整。<br>
+             主要包含新居入宅、舊居改造，或是商業空間的風水調整。<br>
+             室外格局需透過現場勘查與專業分析，室內格局可透過線上進行。<br>
+             服務範圍涵蓋台澎金馬、中港澳及東南亞主要城市。
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-img">
+          <img src="services/slap.png" alt="手面相">
+        </div>
+        <div class="service-text">
+          <h3>手面相</h3>
+          <p>融合AI大數據與多年面相經驗，我們打造出更科學化、系統化的手面相分析方式。<br>
+            只需提供一張清晰照片，便能協助您解析老闆、同事、伴侶、朋友等人際關係中的潛在性格與互動模式。<br>
+            提供線上諮詢與現場論命兩種方式，讓您在最舒適的狀態下，一同深入探討面相所藏的訊息與機會。
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-img">
+          <img src="services/name1.png" alt="姓名學">
+        </div>
+        <div class="service-text">
+          <h3>姓名學</h3>
+          <p>結合多年命名經驗與各產業實務，打造專屬於您的姓名方案。<br>
+              不論是新生兒命名、大人改名，或是公司、品牌、行號取名，<br>
+              以八字命盤為基礎，考量五行平衡與格局流年，確保名字既合命又具發展潛力。<br><br>
+              提供線上命名洽談服務，無需親訪，也能量身打造您的吉祥好名。
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-img">
+          <img src="services/date.jpg" alt="擇日學">
+        </div>
+        <div class="service-text">
+          <h3>擇日學</h3>
+          <p>擇日不只是看黃曆，更是根據個人八字命盤與家庭情況，選出真正的良辰吉日。<br>
+            我們協助您在入宅、嫁娶、剖腹產、開工、動土等重大時刻，選擇對您與家人最有助益的日子。<br>
+            所有服務皆可透過線上諮詢方式完成，讓您輕鬆掌握吉時，安心迎接人生的重要時刻。
+          </p>
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-img">
+          <img src="services/traditonal-customs.jpg" alt="傳統習俗">
+        </div>
+        <div class="service-text">
+          <h3>傳統習俗&售後客服</h3>
+          <p>日常生活中的各種傳統禮俗、民間禁忌與習慣，我們也提供諮詢與建議。<br>
+             例如入宅儀式、拜拜流程、結婚習俗、開市儀典等，協助您避免犯忌、增添福氣。<br>
+             若您在諮詢後仍有任何不清楚的地方，或事後有新的問題想釐清，歡迎隨時來電詢問，
+             我們將以最誠摯的態度為您解說。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!---------------------------- 服務項目 end--------------------------------->
+  <!--------------------------- 業務範圍 start----------------------------------->
+  <section id="scope">
+    <div>
+      <h2>
+        <span class = "h2-chinese">業務範圍</span>
+        <span class = "h2-english">Business scope</span>
+      </h2>
+    </div>
+
+    <div class="office-map">
+      <span class="element_title">實體論命</span>
+      <div class="head-office">
+        <img src="scope/taipei.jpg" alt="總部">
+        <span class="headquarters_position"><br>台北辦公室</span>
+      </div>
+
+      <span class="element_title"><br>陽宅堪輿</span>
+
+      <div class="branches">
+        <div class="branch">
+          <div class="image-wrapper">
+            <img src="scope/tainan.jpeg" alt="台灣">
+            <div class="img-overlay_1">
+              <span class="Business_scope">台澎金馬</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="branch">
+          <div class="image-wrapper">
+            <img src="scope/shanghai.jpeg" alt="中港澳">
+            <div class="img-overlay_2">
+              <span class="Business_scope">中港澳</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="branch">
+          <div class="image-wrapper">
+            <img src="scope/saigon.jpeg" alt="東南亞">
+            <div class="img-overlay_3">
+              <span class="Business_scope">東南亞</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-pic">
+          <img src="scope/chating3.png" alt="聊天插圖">
+      </div>
+
+    </div>
+  </section>
+<!--------------------------- 業務範圍 end-----------------------------------> 
+<!---------------------------- 聯絡我們 ------------------------------------->
+  <section id="contact">
+    <div>
+      <h2>
+        <span class = "h2-chinese">聯絡我們</span>
+        <span class = "h2-english">Contact</span>
+      </h2>
+    </div>
+
+    <div class="contact-content">
+
+      <div class="contact-info">
+        <p class="contact-title">林老師命理研究</p>
+        <p class="contact-text"><img src="contact/telephone.png" alt="phone" class="icon">(+886) 0975-696-786</p>
+        <p class="contact-text"><img src="contact/mail.png" alt="mail" class="icon">bb91428tw@gmail.com</p>
+        <p class="contact-text"><img src="contact/location.png" alt="location" class="icon">台北市中正區羅斯福路一段36號</p>
+      </div>
+
+      <div class="map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.0864633251135!2d121.51651727667965!3d25.031139638404294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9994feeaaab%3A0xeea4d71cc91a1f38!2zMTAw5Y-w5YyX5biC5Lit5q2j5Y2A576F5pav56aP6Lev5LiA5q61MzbomZ8!5e0!3m2!1szh-TW!2stw!4v1754034481109!5m2!1szh-TW!2stw"
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="qr-codes">
+        <img src="contact/line.jpeg" alt="Line QR Code">
+        <img src="contact/wechat.png" alt="Wechat QR Code">
+        <img src="contact/whatsapp.png" alt="whatsapp QR Code">
+      </div>
+
+    </div>
+
+    
+    
+  </section>
+<!---------------------------- 聯絡我們 end------------------------------->
+
+  <footer>
+    <p>Copyright © 2025 林老師命理研究 All rights reserved.</p>
+  </footer>
+
+  
+  <!------------------------------------back to top botton------------------------------------------->
+  <a href="#" id="backToTop" class="back-to-top">
+    <img src="contact/upload.png" alt="Back to Top">
+  </a>
+
+
+  <script>
+    
+    // 點擊時平滑滾動
+    document.getElementById('backToTop').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 滾動到一定高度才顯示按鈕
+    window.addEventListener('scroll', function () {
+      const button = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        button.style.display = 'block';
+      } else {
+        button.style.display = 'none';
+      }
+    });
+  </script>
+  <!------------------------------------back to top botton end--------------------------------------->
+
+
+  <!------------------------------------漢堡互動區------------------------------------------->
+  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');   // 讓漢堡變成 X
+  navLinks.classList.toggle('show');     // 顯示/隱藏選單 + 動畫
+  });
+  </script>
+  <!------------------------------------漢堡互動區結束--------------------------------------->
+
+  <!------------------------------------  slide切換區---------------------------------------->
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 4;
+    const carousel = document.getElementById('carousel');
+    let slideInterval = null;
+
+    function updateSlide() {
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function moveSlide(direction) {
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      updateSlide();
+      resetInterval();
+    }
+
+    function resetInterval() {
+      if (slideInterval) clearInterval(slideInterval);
+      slideInterval = setInterval(() => {
+        moveSlide(1);
+      }, 3000);
+    }
+
+    resetInterval();
+  </script>
+  <!---------------------------------------slide切換區end-------------------------------------->
+</body>
+</html>
