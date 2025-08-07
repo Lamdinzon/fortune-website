@@ -847,6 +847,14 @@ h2 .h2-english {
     text-align: center;
   }
 
+  .contact-title {
+    font-size: 1.8em;
+  }
+
+  .contact-text {
+    font-size: 1.1em;
+  }
+
   .qr-codes {
     flex-direction: row;
   }
@@ -856,7 +864,8 @@ h2 .h2-english {
   }
 
   .map-wrapper iframe {
-    height: 250px;
+    height: 200px;
+    width: 90%;
   }
 }
 
@@ -891,4 +900,5 @@ footer {
   width: 24px;
   height: 24px;
   display: block;
+
 }
