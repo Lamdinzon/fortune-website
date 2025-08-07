@@ -848,11 +848,18 @@ h2 .h2-english {
   }
 
   .contact-title {
-    font-size: 1.8em;
+    font-size: 1.5em;
   }
 
   .contact-text {
-    font-size: 1.1em;
+    font-size: 0.9em;
+  }
+
+  .contact-info .icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 0.3em;
   }
 
   .qr-codes {
@@ -902,3 +909,4 @@ footer {
   display: block;
 
 }
+
