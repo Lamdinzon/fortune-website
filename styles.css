@@ -317,9 +317,9 @@ h2 .h2-english {
   display: flex;
   gap: 5em;
   align-items: center;
-  max-width: 1500px;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1800px;
 }
 
 /* 圖片容器的設定 */
@@ -909,4 +909,5 @@ footer {
   display: block;
 
 }
+
 
