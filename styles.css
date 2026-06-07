@@ -494,7 +494,7 @@ h2 .h2-english {
   display: block;
 }
 
-/* 服務項目文字區塊，寬度撐滿，內距 1em，固定高度 232px，盒模型計算padding */
+/* 服務項目文字區塊，寬度撐滿，內距 1em，固定高度 232px */
 .service-text {
   width: 100%;
   padding: 1em;
@@ -503,6 +503,8 @@ h2 .h2-english {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  position: relative;
+  padding-bottom: 30px ;
 }
 
 /* 服務項目標題 h3，底部留 0.5em 空隙，字體大小和顏色 */
@@ -522,6 +524,79 @@ h2 .h2-english {
   text-overflow: ellipsis;
 }
 
+/* 服務項目文字區塊，圖不同大小特設陽宅區 */
+.service-text-house {
+  width: 100%;
+  padding: 1em;
+  height: 252px;             
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: relative;
+  padding-bottom: 30px ;
+}
+
+.service-text-house h3 {
+  margin: 0 0 0.5em;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.service-text-house p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 服務項目文字區塊，圖不同大小特設姓名學區 */
+.service-text-name {
+  width: 100%;
+  padding: 1em;
+  height: 360px;             
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: relative;
+  padding-bottom: 30px ;
+}
+
+.service-text-name h3 {
+  margin: 0 0 0.5em;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.service-text-name p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.6;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 價格標籤樣式 */
+.service-price {
+    position: absolute;
+    right: 15px;
+    bottom: 15px; 
+    
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #b8860b; 
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0px;
+    border-radius: 0px; 
+    z-index: 5;
+    white-space: nowrap;
+}
+
 @media (max-width: 1000px) and (min-width: 769px) {
   /* 服務項目網格的間距縮小，左右內距調整 */
   .services-grid {
@@ -539,6 +614,17 @@ h2 .h2-english {
   .service-text {
     height: auto;          
   }
+
+  .service-price {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        align-self: flex-end; /* 讓它依然靠右排列 */
+        margin-top: 10px;
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -566,6 +652,123 @@ h2 .h2-english {
   }
 }
 /*************************************服務項目 end*********************************/
+
+
+/*************************************FAQ start************************************/
+#faq {
+    padding: 0; /* 移除 section 預設的 3em 2em */
+    padding-bottom: 5em;
+    background-color: #fff; /* 讓背景保持乾淨 */
+}
+
+
+/* FAQ 區塊標題樣式，同步你其他的 section-h2 風格 */
+.faq-h2 {
+  background: linear-gradient(to bottom, rgba(107, 149, 96, 0.678), transparent);
+  padding: 2em 1em;
+  text-align: center;
+}
+
+.faq-h2 h2 {
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+
+/* 確保 FAQ 區塊也有足夠的底部間距 */
+#faq {
+  padding-bottom: 5em;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em;
+    cursor: pointer;
+    background: #fdfdfd;
+    transition: background 0.3s;
+}
+
+.faq-question:hover {
+    background: #f0f5ee; /* 呼應你的綠色系 */
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr; /* 預設高度為 0 */
+    transition: grid-template-rows 0.5s ease; /* 控制展開的速度與手感 */
+    overflow: hidden;
+}
+
+/* 當父層有 .active 時，讓內文展開 */
+.faq-item.active .faq-answer {
+    grid-template-rows: 1fr; /* 自動計算內容高度並展開 */
+}
+
+/* 內層包裹容器：確保內距不會卡住動畫 */
+.faq-answer-inner {
+    min-height: 0;
+}
+
+.faq-answer-inner p {
+    padding: 0 1.5em 1.5em;
+    color: #666;
+    margin: 0;
+}
+
+.arrow {
+    transition: transform 0.5s ease;
+}
+.faq-item.active .arrow {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    /* 1. 確保 FAQ 容器不要貼邊 */
+    .faq-container {
+        width: 100%;
+        padding: 0 1.5em; /* 這裡的 1.5em (約 24px) 是關鍵留白 */
+        margin: 0 auto;
+    }
+
+    /* 2. 標題部分也建議同步 */
+    .faq-h2 h2 {
+        padding: 0 1em;
+        font-size: 1.4em; /* 手機版標題稍微縮小點比較精緻 */
+    }
+
+    /* 3. 如果你有手風琴展開的底色，確保它的圓角在手機版依然好看 */
+    .faq-question {
+        padding: 1.2em 1em; /* 手機版內距稍微縮減一點點，增加內容空間 */
+    }
+
+    .faq-item {
+        background: #fff;
+        border-radius: 8px; /* 增加一點點圓角 */
+        margin-bottom: 1em;
+        border: 1px solid #eee; /* 加個極淡的邊框 */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+}
+
+/*************************************FAQ end************************************/
+
 /************************************ 業務範圍 start *************************************/
 
 /* #scope：範圍區塊背景使用上下濃淡、中間透明的線性漸層效果 */
@@ -744,7 +947,7 @@ h2 .h2-english {
   }
 }
 /************************************ 業務範圍 end*************************************/
-/************************************* 聯絡表單 **************************************/
+/************************************* contact **************************************/
 #contact {
   position: relative;
   color: black;
@@ -839,6 +1042,118 @@ h2 .h2-english {
   box-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
+.contact-form-wrapper {
+  flex: 1.5; /* 讓表單佔據較多空間 */
+  background: white;
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 1.5em;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+/* 輸入框樣式 */
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgba(107, 149, 96, 0.8); /* 聚焦時變綠色 */
+  box-shadow: 0 0 5px rgba(107, 149, 96, 0.2);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+/* 隱藏原始的核取圓圈/方框 */
+.btn-check input {
+    display: none;
+}
+
+/* 按鈕外殼樣式 */
+.btn-check span {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f0f0f0; /* 預設淺灰色 */
+    color: #666;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+    min-width: 45px;
+    text-align: center;
+}
+
+/* 當 input 被選中時，連動調整後面的 span 樣式 */
+.btn-check input:checked + span {
+    background-color: rgba(107, 149, 96, 0.8); /* 林老師綠 */
+    color: white;
+    border-color: rgba(107, 149, 96, 1);
+    box-shadow: 0 2px 5px rgba(107, 149, 96, 0.3);
+}
+
+/* 滑鼠經過效果 */
+.btn-check:hover span {
+    border-color: rgba(107, 149, 96, 0.5);
+}
+
+/* 針對星期組 (7個) 在手機版自動換行的優化 */
+@media (max-width: 480px) {
+    .day-group {
+        gap: 5px;
+    }
+    .btn-check span {
+        padding: 8px 10px;
+        min-width: 38px;
+    }
+}
+
+/* 提交按鈕 */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: rgba(107, 149, 96);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: rgb(87, 129, 76);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
 /* 手機模式改為上下排列 */
 @media (max-width: 768px) {
   .contact-content {
@@ -874,9 +1189,14 @@ h2 .h2-english {
     height: 200px;
     width: 90%;
   }
+
+  .contact-form-wrapper {
+    width: 100%;
+    padding: 1.5em;
+  }
 }
 
-/* Footer */
+/* **************************Footer********************************* */
 footer {
   background:#222; color:#ccc; text-align:center;
   padding:1em;
@@ -886,7 +1206,7 @@ footer {
 .back-to-top {
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  left: 30px;
   background-color: rgb(250, 252, 204);
   color: white;
   padding: 10px 15px;
@@ -910,4 +1230,73 @@ footer {
 
 }
 
+/************************** FAB ************************************/
+/* 浮動按鈕容器固定在右下角 */
+.floating-contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column; /* 讓按鈕垂直排列 */
+  gap: 15px; /* 按鈕之間的間距 */
+  z-index: 9999; /* 確保在最上層 */
+}
 
+/* 按鈕基本樣式 */
+.fab-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* LINE 專屬綠色 */
+.line-btn {
+  background-color: #06C755;
+}
+
+/* 電話專屬顏色 (建議用你網站的林老師綠或是深灰色) */
+.phone-btn {
+  display: none;
+  background-color: rgba(107, 149, 96);
+}
+
+/* 滑鼠懸停效果 */
+.fab-btn:hover {
+  transform: scale(1.1) translateY(-5px);
+  filter: brightness(1.1);
+}
+
+/* 手機版適配：稍微縮小一點點，避免遮擋內容 */
+@media (max-width: 768px) {
+  .floating-contact {
+    bottom: 20px;
+    right: 20px;
+  }
+  .fab-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+  .phone-btn {
+    display: flex; /* 恢復顯示 */
+  }
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(6, 199, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(6, 199, 85, 0); }
+}
+
+.line-btn {
+  animation: pulse-green 3s infinite; /* 每兩秒跳動一次外圈光暈 */
+}
